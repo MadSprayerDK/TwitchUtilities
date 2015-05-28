@@ -3,6 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <StackPanel>
+            <Label>Custom Label:</Label>
+            <TextBox Name="CustomLabel"></TextBox>
+            <Button Click="UpdaetLabelBtn_OnClick" Name="UpdaetLabelBtn">Update Label</Button>
+            <Separator />
+            <Label>Countdown:</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Hours:</Label>
+                <TextBox Width="30" Name="CountdownHours"></TextBox>
+                <Label>Minutes:</Label>
+                <TextBox Width="30" Name="CountdownMinutes"></TextBox>
+                <Label>Seconds:</Label>
+                <TextBox Width="30" Name="CountdownSeconds"></TextBox>
+                <Label Name="CountdownOutputLabel" />
+            </StackPanel>
+            <Button Name="StartCountdown" Click="StartCountdown_OnClick">Start Countdown</Button>
+        </StackPanel>
     </Grid>
 </Window>
