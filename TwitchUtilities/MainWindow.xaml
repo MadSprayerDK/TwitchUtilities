@@ -1,24 +1,127 @@
 ﻿<Window x:Class="TwitchUtilities.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Twitch Utilities" 
+        Height="350"
+        MinHeight="350"
+        Width="505"
+        MinWidth="505">
     <Grid>
-        <StackPanel>
-            <Label>Custom Label:</Label>
-            <TextBox Name="CustomLabel"></TextBox>
-            <Button Click="UpdaetLabelBtn_OnClick" Name="UpdaetLabelBtn">Update Label</Button>
-            <Separator />
-            <Label>Countdown:</Label>
-            <StackPanel Orientation="Horizontal">
-                <Label>Hours:</Label>
-                <TextBox Width="30" Name="CountdownHours"></TextBox>
-                <Label>Minutes:</Label>
-                <TextBox Width="30" Name="CountdownMinutes"></TextBox>
-                <Label>Seconds:</Label>
-                <TextBox Width="30" Name="CountdownSeconds"></TextBox>
-                <Label Name="CountdownOutputLabel" />
-            </StackPanel>
-            <Button Name="StartCountdown" Click="StartCountdown_OnClick">Start Countdown</Button>
-        </StackPanel>
+        
+        <TabControl>
+            <TabItem
+                Header="Checklist">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                    </Grid.RowDefinitions>
+
+                    <GroupBox
+                        Header="Pre-Stream Checklist"
+                        Grid.Row="0">
+                        <TextBox
+                            Name="PreChecklist"
+                            AcceptsReturn="True"/>
+                    </GroupBox>
+                    <GroupBox
+                        Header="Post-Stream Checklist"
+                        Grid.Row="1">
+                        <TextBox
+                            Name="PostChecklist"
+                            AcceptsReturn="True"/>
+                    </GroupBox>
+                    <Button
+                        Content="Save Chechlists"
+                        Grid.Row="2"
+                        Margin="5, 5, 5, 5"
+                        Click="SaveChecklists_OnClick"/>
+                </Grid>
+                
+                
+                
+            </TabItem>
+            <TabItem
+                Header="Labels">
+
+
+                <StackPanel>
+                    <GroupBox
+                Header="Custom Label"
+                Margin="5, 2, 5, 0">
+                        <StackPanel>
+                            <TextBox 
+                        Name="CustomLabel"
+                        Margin="0, 5, 0, 0" />
+                            <Button 
+                        Click="UpdaetLabelBtn_OnClick" 
+                        Content="Update Label" 
+                        Margin="0, 5, 0, 0"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox
+                Header="Countdown"
+                Margin="5, 5, 5, 0">
+                        <StackPanel
+                    Margin="0, 5, 0, 0">
+                            <StackPanel 
+                        Orientation="Horizontal">
+                                <Label
+                            Content="Hours:" />
+                                <TextBox 
+                            Width="30" 
+                            Name="CountdownHours"
+                            TextChanged="CountdownInsert_TextChange" />
+                                <Label
+                            Content="Minutes:" />
+                                <TextBox 
+                            Width="30" 
+                            Name="CountdownMinutes" 
+                            TextChanged="CountdownInsert_TextChange" />
+                                <Label
+                            Content="Seconds:" />
+                                <TextBox 
+                            Width="30" 
+                            Name="CountdownSeconds" 
+                            TextChanged="CountdownInsert_TextChange" />
+                                <Label 
+                            Name="CountdownOutputLabel" />
+                            </StackPanel>
+                            <Label 
+                        Content="Countdown Text" />
+                            <TextBox
+                        Name="CountdownTextInput" 
+                        TextChanged="CountdownInsert_TextChange"/>
+                            <StackPanel 
+                        Orientation="Horizontal"
+                        Margin="0, 5, 0, 0">
+                                <Button 
+                            Click="ToggleCountdown_OnClick"
+                            Content="Start/Pause Countdown" />
+                                <Button 
+                            Click="ResetCountdown_OnClick"
+                            Content="Preview/Reset Countdown"
+                            Margin="5, 0, 0, 0" />
+                                <Button
+                            Click="ClearCountdown_OnClick"
+                            Content="Clear Countdown from Stream"
+                            Margin="5, 0, 0, 0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+
+
+
+            </TabItem>
+        </TabControl>
+        
+        
+        
+        
+        
+        
+        
     </Grid>
 </Window>

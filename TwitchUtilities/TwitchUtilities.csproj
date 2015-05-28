@@ -103,9 +103,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Settings\PreChecklist.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Settings\PostChecklist.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(SolutionDir)TwitchUtilities\Labels" "$(TargetDir)Labels" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(SolutionDir)TwitchUtilities\Labels" "$(TargetDir)Labels" /s /i /y
+XCOPY "$(SolutionDir)TwitchUtilities\Settings" "$(TargetDir)Settings" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,4 @@
+﻿1. Disable Steam Notifications
+2. Disable Steam FPS Counter
+3. Set correct game on Twitch
+4. Set  correct stream title
