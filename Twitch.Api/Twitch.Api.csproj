@@ -47,7 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Channel.cs" />
-    <Compile Include="Model\Stream.cs" />
+    <Compile Include="Model\Links\ChannelLinks.cs" />
+    <Compile Include="Model\Links\StreamLinks.cs" />
+    <Compile Include="Model\QueryError.cs" />
+    <Compile Include="Model\StreamElements\StreamPreview.cs" />
+    <Compile Include="Model\StreamElements\StreamStreamLinks.cs" />
+    <Compile Include="Model\StreamInfo.cs" />
+    <Compile Include="Model\StreamElements\StreamStream.cs" />
     <Compile Include="TwitchApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Twitch.Api.Model;
 
@@ -24,9 +23,9 @@ namespace Twitch.Api
             return JsonConvert.DeserializeObject<Channel>(await PerformHttpsRequest("channels/" + Channel));
         }
 
-        public async Task<Stream> GetStream()
+        public async Task<StreamInfo> GetStream()
         {
-            return JsonConvert.DeserializeObject<Stream>(await PerformHttpsRequest("streams/" + Channel));
+            return JsonConvert.DeserializeObject<StreamInfo>(await PerformHttpsRequest("streams/" + Channel));
         }
 
         private async Task<string> PerformHttpsRequest(string uri)
@@ -37,22 +36,16 @@ namespace Twitch.Api
             var client = new HttpClient {BaseAddress = new Uri(ApiBaseUri)};
 
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            string response;
+            var response = await client.GetAsync(uri);
+            var message = await response.Content.ReadAsStringAsync();
 
-            try
-            {
-                response = await client.GetStringAsync(uri);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            return response;
+            if (response.StatusCode == HttpStatusCode.OK)
+                return message;
+            
+            var error = JsonConvert.DeserializeObject<QueryError>(message);
+            throw new Exception(error.Error + ": " + error.Message);
         }
-
-
     }
 }
