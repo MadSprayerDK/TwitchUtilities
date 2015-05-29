@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using Twitch.Api;
 
 namespace TwitchUtilities
 {
@@ -13,6 +15,7 @@ namespace TwitchUtilities
     {
         private TimeSpan _counting;
         private readonly Timer _countdownTimer;
+        private readonly Timer _updateChannelTimer;
 
         public MainWindow()
         {
@@ -23,28 +26,17 @@ namespace TwitchUtilities
             _countdownTimer = new Timer
             {
                 Interval = 1000,
+                AutoReset = true,
+            };
+            _countdownTimer.Elapsed += CountdownTimer_Elapsed;
+
+            _updateChannelTimer = new Timer
+            {
+                Interval = 20000,
                 AutoReset = true
             };
+            _updateChannelTimer.Elapsed += ChannelDataTimer_Elapsed;
 
-            _countdownTimer.Elapsed += (o, args) =>
-            {
-                if (_counting.TotalSeconds < 1)
-                    _countdownTimer.Stop();
-                else
-                {
-                    _counting = _counting - new TimeSpan(0, 0, 0, 1);
-
-                    var output = _counting.ToString(@"hh\:mm\:ss");
-                    CountdownOutputLabel.Dispatcher.Invoke(() => { CountdownOutputLabel.Content = output; });
-
-                    var countdownText = CountdownTextInput.Dispatcher.Invoke(() => CountdownTextInput.Text);
-
-                    if (string.IsNullOrEmpty(countdownText))
-                        File.WriteAllText("Labels/Countdown.txt", output);
-                    else
-                        File.WriteAllText("Labels/Countdown.txt", countdownText + @" " + output);
-                }
-            };
 
             PreChecklist.Text = File.ReadAllText("Settings/PreChecklist.txt");
             PostChecklist.Text = File.ReadAllText("Settings/PostChecklist.txt");
@@ -107,6 +99,26 @@ namespace TwitchUtilities
             CountdownOutputLabel.Content = output;
         }
 
+        private void CountdownTimer_Elapsed(object sender, ElapsedEventArgs args)
+        {
+            if (_counting.TotalSeconds < 1)
+                _countdownTimer.Stop();
+            else
+            {
+                _counting = _counting - new TimeSpan(0, 0, 0, 1);
+
+                var output = _counting.ToString(@"hh\:mm\:ss");
+                CountdownOutputLabel.Dispatcher.Invoke(() => { CountdownOutputLabel.Content = output; });
+
+                var countdownText = CountdownTextInput.Dispatcher.Invoke(() => CountdownTextInput.Text);
+
+                if (string.IsNullOrEmpty(countdownText))
+                    File.WriteAllText("Labels/Countdown.txt", output);
+                else
+                    File.WriteAllText("Labels/Countdown.txt", countdownText + @" " + output);
+            }
+        }
+
         private void ClearCountdown_OnClick(object sender, RoutedEventArgs e)
         {
             File.WriteAllText("Labels/Countdown.txt", "");
@@ -116,6 +128,31 @@ namespace TwitchUtilities
         {
             File.WriteAllText("Settings/PreChecklist.txt", PreChecklist.Text);
             File.WriteAllText("Settings/PostChecklist.txt", PostChecklist.Text);
+        }
+
+
+        private async void GetChannelData_OnClick(object sender, RoutedEventArgs e)
+        {
+            if(string.IsNullOrEmpty(ChannelName.Text))
+                return;
+
+            await Task.Run(() =>
+            {
+                ChannelDataTimer_Elapsed(this, null);
+            });
+
+            _updateChannelTimer.Start();
+        }
+
+        private async void ChannelDataTimer_Elapsed(object sender, ElapsedEventArgs args)
+        {
+            var channelName = ChannelName.Dispatcher.Invoke(() => ChannelName.Text);
+            var api = new TwitchApi(channelName);
+            var stream = api.GetStream();
+            var channel = api.GetChannel();
+
+            var streamResult = await stream;
+            var channelResult = await channel;
         }
     }
 }

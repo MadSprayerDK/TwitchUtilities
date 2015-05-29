@@ -109,6 +109,15 @@
   <ItemGroup>
     <Resource Include="Settings\PostChecklist.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Settings\CurrentStatusChannel.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Twitch.Api\Twitch.Api.csproj">
+      <Project>{c70b2bee-079e-4997-b80c-c0d1a8f91fff}</Project>
+      <Name>Twitch.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(SolutionDir)TwitchUtilities\Labels" "$(TargetDir)Labels" /s /i /y
