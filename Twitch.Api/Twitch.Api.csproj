@@ -44,16 +44,25 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Twitch.OAuthInfo">
+      <HintPath>..\..\Twitch.OAuthInfo\Twitch.OAuthInfo\bin\Debug\Twitch.OAuthInfo.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpServer\HttpProcessor.cs" />
+    <Compile Include="HttpServer\HttpServer.cs" />
+    <Compile Include="HttpServer\StringEventArg.cs" />
     <Compile Include="Model\Channel.cs" />
     <Compile Include="Model\Links\ChannelLinks.cs" />
     <Compile Include="Model\Links\StreamLinks.cs" />
+    <Compile Include="Model\OAuthAccessToken.cs" />
     <Compile Include="Model\QueryError.cs" />
     <Compile Include="Model\StreamElements\StreamPreview.cs" />
     <Compile Include="Model\StreamElements\StreamStreamLinks.cs" />
     <Compile Include="Model\StreamInfo.cs" />
     <Compile Include="Model\StreamElements\StreamStream.cs" />
+    <Compile Include="OAuth.cs" />
+    <Compile Include="OAuthHttpServer.cs" />
     <Compile Include="TwitchApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
