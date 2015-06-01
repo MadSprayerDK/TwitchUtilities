@@ -20,11 +20,13 @@ namespace TwitchUtilities.UserInterface.StatusPanels
             LoginPanel.OAuthClient.HttpServer.Stop();
             var accessToken = await LoginPanel.OAuthClient.GetAccessToken(args.Text);
 
-            var channel = LoginPanel.Dispatcher.Invoke(() => LoginPanel.Channel.Text);
-            TextPanel.Connect(channel, accessToken);
-
-            LoginPanel.Dispatcher.Invoke(() => { LoginPanel.Visibility = Visibility.Hidden;  });
+            LoginPanel.Dispatcher.Invoke(() => { LoginPanel.Visibility = Visibility.Hidden; });
             TextPanel.Dispatcher.Invoke(() => { TextPanel.Visibility = Visibility.Visible; });
+
+            var channel = LoginPanel.Dispatcher.Invoke(() => LoginPanel.Channel.Text);
+            TextPanel.Connect(channel, accessToken, channel);
+
+            
         }
     }
 }

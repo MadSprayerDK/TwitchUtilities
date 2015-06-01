@@ -19,7 +19,7 @@ namespace Twitch.Api
         public override void handleGETRequest(HttpProcessor p)
         {
             var noPrefix = p.http_url.Substring(7);
-            var noPostfix = noPrefix.Remove(noPrefix.Length - 7);
+            var noPostfix = noPrefix.Remove(noPrefix.Length - 17);
             if(OAuthCodeRecived != null)
                 OAuthCodeRecived(this, new StringEventArg(noPostfix));
 

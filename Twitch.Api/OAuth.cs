@@ -26,7 +26,8 @@ namespace Twitch.Api
             Process.Start("https://api.twitch.tv/kraken/oauth2/authorize" +
                    "?response_type=code" +
                    "&client_id=" + OAuthInfo.OAuthInfo.ClientId +
-                   "&redirect_uri=http://localhost:8080");
+                   "&redirect_uri=http://localhost:8080" +
+                   "&scope=chat_login");
         }
 
         public void GetAuthLink()
@@ -47,7 +48,7 @@ namespace Twitch.Api
 
             var content = new FormUrlEncodedContent(new[] 
             {
-                new KeyValuePair<string, string>("", "login")
+                new KeyValuePair<string, string>("", "")
             });
 
             client.DefaultRequestHeaders.Accept.Clear();
