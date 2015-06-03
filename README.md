@@ -8,8 +8,6 @@ Useful utilities for twitch streaming.
 
 Login information will not be seen or stored by the application.
 
-Confidential information is handled by Twitch alone.
-
 ## Checklists
 * Create checklists to use before and after streaming
 * 
