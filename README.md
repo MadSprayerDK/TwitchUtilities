@@ -10,7 +10,7 @@ Login information will not be seen or stored by the application.
 
 ## Checklists
 * Create checklists to use before and after streaming
-* 
+
 ## Channel Status
 * See the current status of the channel
 * Interact with viewers via the chat
