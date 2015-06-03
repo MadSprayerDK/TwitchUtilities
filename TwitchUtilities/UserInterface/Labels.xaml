@@ -10,12 +10,12 @@
                 Header="Custom Label">
             <StackPanel>
                 <TextBox 
-                        Name="CustomLabel"
-                        Margin="0, 5, 0, 0" />
+                    Name="CustomLabel"
+                    Margin="0, 5, 0, 0" />
                 <Button 
-                        Click="UpdaetLabelBtn_OnClick" 
-                        Content="Update Label" 
-                        Margin="0, 5, 0, 0"/>
+                    Click="UpdateLabelBtn_OnClick" 
+                    Content="Update Label" 
+                    Margin="0, 5, 0, 0"/>
             </StackPanel>
         </GroupBox>
         <GroupBox
@@ -26,45 +26,45 @@
                 <StackPanel 
                         Orientation="Horizontal">
                     <Label
-                            Content="Hours:" />
+                        Content="Hours:" />
                     <TextBox 
-                            Width="30" 
-                            Name="CountdownHours"
-                            TextChanged="CountdownInsert_TextChange" />
+                        Width="30" 
+                        Name="CountdownHours"
+                        TextChanged="CountdownInsert_TextChange" />
                     <Label
-                            Content="Minutes:" />
+                        Content="Minutes:" />
                     <TextBox 
-                            Width="30" 
-                            Name="CountdownMinutes" 
-                            TextChanged="CountdownInsert_TextChange" />
+                        Width="30" 
+                        Name="CountdownMinutes" 
+                        TextChanged="CountdownInsert_TextChange" />
                     <Label
-                            Content="Seconds:" />
+                        Content="Seconds:" />
                     <TextBox 
-                            Width="30" 
-                            Name="CountdownSeconds" 
-                            TextChanged="CountdownInsert_TextChange" />
-                    <Label 
-                            Name="CountdownOutputLabel" />
+                        Width="30" 
+                        Name="CountdownSeconds" 
+                        TextChanged="CountdownInsert_TextChange" />
                 </StackPanel>
                 <Label 
-                        Content="Countdown Text" />
+                    Content="Countdown Text" />
                 <TextBox
-                        Name="CountdownTextInput" 
-                        TextChanged="CountdownInsert_TextChange"/>
+                    Name="CountdownTextInput" 
+                    TextChanged="CountdownInsert_TextChange" />
+                <Label 
+                    Name="CountdownOutputLabel" />
                 <StackPanel 
-                        Orientation="Horizontal"
-                        Margin="0, 5, 0, 0">
+                    Orientation="Horizontal"
+                    Margin="0, 5, 0, 0">
                     <Button 
-                            Click="ToggleCountdown_OnClick"
-                            Content="Start/Pause Countdown" />
+                        Click="ToggleCountdown_OnClick"
+                        Content="Start/Pause Countdown" />
                     <Button 
-                            Click="ResetCountdown_OnClick"
-                            Content="Preview/Reset Countdown"
-                            Margin="5, 0, 0, 0" />
+                        Click="ResetCountdown_OnClick"
+                        Content="Preview/Reset Countdown"
+                        Margin="5, 0, 0, 0" />
                     <Button
-                            Click="ClearCountdown_OnClick"
-                            Content="Clear Countdown from Stream"
-                            Margin="5, 0, 0, 0" />
+                        Click="ClearCountdown_OnClick"
+                        Content="Clear Countdown from Stream"
+                        Margin="5, 0, 0, 0" />
                 </StackPanel>
             </StackPanel>
         </GroupBox>

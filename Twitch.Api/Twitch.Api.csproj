@@ -55,12 +55,16 @@
     <Compile Include="Model\Channel.cs" />
     <Compile Include="Model\Links\ChannelLinks.cs" />
     <Compile Include="Model\Links\StreamLinks.cs" />
+    <Compile Include="Model\Links\VerifyLinks.cs" />
     <Compile Include="Model\OAuthAccessToken.cs" />
     <Compile Include="Model\QueryError.cs" />
     <Compile Include="Model\StreamElements\StreamPreview.cs" />
     <Compile Include="Model\StreamElements\StreamStreamLinks.cs" />
     <Compile Include="Model\StreamInfo.cs" />
     <Compile Include="Model\StreamElements\StreamStream.cs" />
+    <Compile Include="Model\Verify.cs" />
+    <Compile Include="Model\VerifyElements\VerifyAuthorization.cs" />
+    <Compile Include="Model\VerifyElements\VerifyToken.cs" />
     <Compile Include="OAuth.cs" />
     <Compile Include="OAuthHttpServer.cs" />
     <Compile Include="TwitchApi.cs" />

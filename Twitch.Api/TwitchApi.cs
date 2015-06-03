@@ -30,9 +30,6 @@ namespace Twitch.Api
 
         private async Task<string> PerformHttpsRequest(string uri)
         {
-            if(string.IsNullOrEmpty(Channel))
-                throw new Exception("No channel is set");
-
             var client = new HttpClient {BaseAddress = new Uri(ApiBaseUri)};
 
             client.DefaultRequestHeaders.Accept.Clear();

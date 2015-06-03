@@ -9,7 +9,8 @@
         MinWidth="505"
         Icon="icon.png">
     <Grid>
-        <TabControl>
+        <TabControl
+            Margin="0, 2, 0, 0">
             <TabItem
                 Header="Checklist">
                 <controls:Checklist />

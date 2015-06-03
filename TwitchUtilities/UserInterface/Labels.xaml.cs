@@ -18,7 +18,7 @@ namespace TwitchUtilities.UserInterface
         {
             InitializeComponent();
 
-            CountdownOutputLabel.Content = "00:00:00";
+            CountdownTextInput.Text = "You can use the {time} identifier here";
 
             _countdownTimer = new Timer
             {
@@ -28,7 +28,7 @@ namespace TwitchUtilities.UserInterface
             _countdownTimer.Elapsed += CountdownTimer_Elapsed;
         }
 
-        private void UpdaetLabelBtn_OnClick(object sender, RoutedEventArgs e)
+        private void UpdateLabelBtn_OnClick(object sender, RoutedEventArgs e)
         {
             File.WriteAllText("Labels/CustomLabel.txt", CustomLabel.Text);
         }
@@ -45,11 +45,7 @@ namespace TwitchUtilities.UserInterface
                 CountdownSeconds.IsEnabled = false;
                 _countdownTimer.Start();
 
-                var output = _counting.ToString(@"hh\:mm\:ss");
-                if (string.IsNullOrEmpty(CountdownTextInput.Text))
-                    File.WriteAllText("Labels/Countdown.txt", output);
-                else
-                    File.WriteAllText("Labels/Countdown.txt", CountdownTextInput.Text + @" " + output);
+                CreateStreamString(true);
             }
         }
 
@@ -61,13 +57,9 @@ namespace TwitchUtilities.UserInterface
             CountdownHours.IsEnabled = true;
             CountdownMinutes.IsEnabled = true;
             CountdownSeconds.IsEnabled = true;
-            CountdownInsert_TextChange(this, null);
 
-            var output = _counting.ToString(@"hh\:mm\:ss");
-            if (string.IsNullOrEmpty(CountdownTextInput.Text))
-                File.WriteAllText("Labels/Countdown.txt", output);
-            else
-                File.WriteAllText("Labels/Countdown.txt", CountdownTextInput.Text + @" " + output);
+            CountdownInsert_TextChange(this, null);
+            CreateStreamString(true);
         }
 
         private void CountdownInsert_TextChange(object sender, TextChangedEventArgs e)
@@ -81,8 +73,7 @@ namespace TwitchUtilities.UserInterface
             int.TryParse(CountdownSeconds.Text, out seconds);
 
             _counting = new TimeSpan(0, hours, minutes, seconds);
-            var output = _counting.ToString(@"hh\:mm\:ss");
-            CountdownOutputLabel.Content = output;
+            CreateStreamString(false);
         }
 
         private void CountdownTimer_Elapsed(object sender, ElapsedEventArgs args)
@@ -93,16 +84,33 @@ namespace TwitchUtilities.UserInterface
             {
                 _counting = _counting - new TimeSpan(0, 0, 0, 1);
 
-                var output = _counting.ToString(@"hh\:mm\:ss");
-                CountdownOutputLabel.Dispatcher.Invoke(() => { CountdownOutputLabel.Content = output; });
-
-                var countdownText = CountdownTextInput.Dispatcher.Invoke(() => CountdownTextInput.Text);
-
-                if (string.IsNullOrEmpty(countdownText))
-                    File.WriteAllText("Labels/Countdown.txt", output);
-                else
-                    File.WriteAllText("Labels/Countdown.txt", countdownText + @" " + output);
+                Dispatcher.Invoke(() =>
+                {
+                    CreateStreamString(true);
+                });
             }
+        }
+
+        private void CreateStreamString(bool publish)
+        {
+            var counting = _counting.ToString(@"hh\:mm\:ss");
+            var countdownTextInput = CountdownTextInput.Text;
+            string output;
+
+            if (string.IsNullOrEmpty(countdownTextInput))
+                output = counting;
+            else
+            {
+                if (countdownTextInput.IndexOf("{time}", StringComparison.Ordinal) != -1)
+                    output = countdownTextInput.Replace("{time}", counting);
+                else
+                    output = CountdownTextInput.Text + @" " + counting;
+            } 
+
+            CountdownOutputLabel.Content = output;
+
+            if (publish)
+                File.WriteAllText("Labels/Countdown.txt", output);
         }
 
         private void ClearCountdown_OnClick(object sender, RoutedEventArgs e)

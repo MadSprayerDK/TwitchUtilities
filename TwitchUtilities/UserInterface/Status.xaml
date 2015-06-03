@@ -20,7 +20,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <controls:StatusPanel />
+            <controls:StatusPanel
+                Grid.Column="0"/>
             
             <GridSplitter 
                 Grid.Column="1"

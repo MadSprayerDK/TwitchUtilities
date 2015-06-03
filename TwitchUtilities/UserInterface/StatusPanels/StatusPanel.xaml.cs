@@ -2,11 +2,9 @@
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media.Animation;
 using Twitch.Api;
 using Twitch.Api.Model;
+using TwitchUtilities.Properties;
 
 namespace TwitchUtilities.UserInterface.StatusPanels
 {
@@ -16,6 +14,7 @@ namespace TwitchUtilities.UserInterface.StatusPanels
     public partial class StatusPanel
     {
         private readonly Timer _updateChannelTimer;
+        private readonly TwitchApi _api;
 
         public StatusPanel()
         {
@@ -27,15 +26,12 @@ namespace TwitchUtilities.UserInterface.StatusPanels
                 AutoReset = true
             };
             _updateChannelTimer.Elapsed += ChannelDataTimer_Elapsed;
+
+            _api = new TwitchApi(Settings.Default.CurrentChannel);
         }
 
-        private async void GetChannelData_OnClick(object sender, RoutedEventArgs e)
+        private async void StatusPanel_OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(ChannelName.Text))
-                return;
-
-            UpdateChannelDataButton.IsEnabled = false;
-
             await Task.Run(() =>
             {
                 ChannelDataTimer_Elapsed(this, null);
@@ -46,13 +42,10 @@ namespace TwitchUtilities.UserInterface.StatusPanels
 
         private async void ChannelDataTimer_Elapsed(object sender, ElapsedEventArgs args)
         {
-            var channelName = ChannelName.Dispatcher.Invoke(() => ChannelName.Text);
-            var api = new TwitchApi(channelName);
-
             StreamInfo stream;
             try
             {
-                stream = await api.GetStream();
+                stream = await _api.GetStream();
             }
             catch (Exception e)
             {
@@ -60,61 +53,25 @@ namespace TwitchUtilities.UserInterface.StatusPanels
                 MessageBox.Show(e.Message);
                 return;
             }
-            finally
-            {
-                UpdateChannelDataButton.Dispatcher.Invoke(() => { UpdateChannelDataButton.IsEnabled = true; });
-            }
 
             Channel channel;
 
             if (stream.Stream == null)
-                channel = await api.GetChannel();
+                channel = await _api.GetChannel();
             else
                 channel = stream.Stream.Channel;
 
-            Status_CurrentViewers.Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() =>
             {
-                Status_CurrentViewers.Content = stream.Stream == null ? "-" : stream.Stream.Viewers.ToString();
-            });
-
-            Status_Followers.Dispatcher.Invoke(() =>
-            {
-                Status_Followers.Content = channel.Followers.ToString();
-            });
-
-            Status_Game.Dispatcher.Invoke(() =>
-            {
-                Status_Game.Content = channel.Game;
-            });
-
-            Status_LiveStatus.Dispatcher.Invoke(() =>
-            {
-                Status_LiveStatus.Content = stream.Stream == null ? "Not Live" : "Live!";
-            });
-
-            Status_Views.Dispatcher.Invoke(() =>
-            {
-                Status_Views.Content = channel.Views.ToString();
-            });
-
-            Status_Status.Dispatcher.Invoke(() =>
-            {
-                Status_Status.Content = channel.Status;
+                CurrentViewers.Content = stream.Stream == null ? "-" : stream.Stream.Viewers.ToString();
+                Followers.Content = channel.Followers.ToString();
+                Game.Content = channel.Game;
+                LiveStatus.Content = stream.Stream == null ? "Not Live" : "Live!";
+                Views.Content = channel.Views.ToString();
+                Status.Content = channel.Status;
             });
         }
 
-        private void ChannelName_TextChange(object sender, TextChangedEventArgs e)
-        {
-            _updateChannelTimer.Stop();
-        }
-
-        private void ChannelName_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key != Key.Enter)
-                return;
-
-            e.Handled = true;
-            GetChannelData_OnClick(this, null);
-        }
+        
     }
 }

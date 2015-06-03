@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="OAuthLogin.xaml.cs">
+      <DependentUpon>OAuthLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\Checklist.xaml.cs">
       <DependentUpon>Checklist.xaml</DependentUpon>
     </Compile>
@@ -69,12 +72,6 @@
     </Compile>
     <Compile Include="UserInterface\StatusPanels\ChatPanel.xaml.cs">
       <DependentUpon>ChatPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserInterface\StatusPanels\ChatPanels\LoginPanel.xaml.cs">
-      <DependentUpon>LoginPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserInterface\StatusPanels\ChatPanels\TextPanel.xaml.cs">
-      <DependentUpon>TextPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\StatusPanels\StatusPanel.xaml.cs">
       <DependentUpon>StatusPanel.xaml</DependentUpon>
@@ -91,6 +88,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OAuthLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserInterface\Checklist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,14 +105,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserInterface\StatusPanels\ChatPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserInterface\StatusPanels\ChatPanels\LoginPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserInterface\StatusPanels\ChatPanels\TextPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,9 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings\PostChecklist.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Settings\CurrentStatusChannel.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Twitch.Api\Twitch.Api.csproj">

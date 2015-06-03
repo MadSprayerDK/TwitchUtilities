@@ -1,0 +1,21 @@
+﻿<Window x:Class="TwitchUtilities.OAuthLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Twitch Utilities" 
+        Height="100" 
+        Width="250"
+        Loaded="OAuthLogin_OnLoaded"
+        Icon="icon.png">
+    <StackPanel>
+        <Label 
+            Content="Checking OAuth Token" 
+            HorizontalAlignment="Center" 
+            Name="StatusText" />
+        <Button 
+            Content="Login" 
+            Margin="20, 5, 20, 0" 
+            IsEnabled="False"
+            Name="LoginButton"
+            Click="LoginButton_OnClick"/>
+    </StackPanel>
+</Window>

@@ -13,6 +13,14 @@ namespace Twitch.Api
 {
     public class OAuth
     {
+        private string ApiBaseUri = "https://api.twitch.tv/kraken/";
+
+        public static readonly string[] Scopes =
+        {
+            "chat_login", 
+            "channel_editor"
+        };
+
         public readonly OAuthHttpServer HttpServer;
         public Thread HttpServerThread; 
 
@@ -23,14 +31,16 @@ namespace Twitch.Api
 
         public void GotoAuthorization()
         {
-            Process.Start("https://api.twitch.tv/kraken/oauth2/authorize" +
+            var scope = string.Join("+", Scopes);
+
+            Process.Start(ApiBaseUri + "oauth2/authorize" +
                    "?response_type=code" +
                    "&client_id=" + OAuthInfo.OAuthInfo.ClientId +
                    "&redirect_uri=http://localhost:8080" +
-                   "&scope=chat_login");
+                   "&scope=" + scope);
         }
 
-        public void GetAuthLink()
+        public void StartAuthRedirectServer()
         {
             HttpServerThread = new Thread(HttpServer.listen);
             HttpServerThread.Start();
@@ -38,7 +48,7 @@ namespace Twitch.Api
 
         public async Task<string> GetAccessToken(string authCode)
         {           
-            var client = new HttpClient { BaseAddress = new Uri("https://api.twitch.tv/kraken/oauth2/token") };
+            var client = new HttpClient { BaseAddress = new Uri(ApiBaseUri + "oauth2/token") };
 
             var uri = "?client_id=" + OAuthInfo.OAuthInfo.ClientId +
                       "&client_secret=" + OAuthInfo.OAuthInfo.Secret +
@@ -61,6 +71,25 @@ namespace Twitch.Api
             {
                 var token = JsonConvert.DeserializeObject<OAuthAccessToken>(message);
                 return token.Access_Token;
+            }
+
+            var error = JsonConvert.DeserializeObject<QueryError>(message);
+            throw new Exception(error.Error + ": " + error.Message);
+        }
+
+        public async Task<Verify> VerifyToken(string oAuthToken)
+        {
+            var client = new HttpClient { BaseAddress = new Uri(ApiBaseUri) };
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = await client.GetAsync("?oauth_token=" + oAuthToken);
+            var message = await response.Content.ReadAsStringAsync();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return JsonConvert.DeserializeObject<Verify>(message);
             }
 
             var error = JsonConvert.DeserializeObject<QueryError>(message);

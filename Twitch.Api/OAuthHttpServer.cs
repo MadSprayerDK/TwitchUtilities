@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Twitch.Api.HttpServer;
 
 namespace Twitch.Api
@@ -18,10 +15,10 @@ namespace Twitch.Api
 
         public override void handleGETRequest(HttpProcessor p)
         {
-            var noPrefix = p.http_url.Substring(7);
-            var noPostfix = noPrefix.Remove(noPrefix.Length - 17);
+            var noPrefix = p.http_url.Substring(p.http_url.IndexOf("?", StringComparison.Ordinal) + 1);
+            var queryElements = noPrefix.Split('&').Select(x => x.Split('=')).ToDictionary(x => x[0], x => x[1]);
             if(OAuthCodeRecived != null)
-                OAuthCodeRecived(this, new StringEventArg(noPostfix));
+                OAuthCodeRecived(this, new StringEventArg(queryElements["code"]));
 
             p.writeSuccess();
             p.outputStream.WriteLine("<html><body><h1>Success</h1>");
