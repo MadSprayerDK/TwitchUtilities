@@ -5,7 +5,9 @@ Useful utilities for twitch streaming.
 * Login with your Twitch account
 * Approve access for the application
 * Start using.
+
 Login information will not be seen or stored by the application.
+
 Confidential information is handled by Twitch alone.
 
 ## Checklists
