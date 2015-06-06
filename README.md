@@ -12,8 +12,9 @@ Login information will not be seen or stored by the application.
 * Create checklists to use before and after streaming
 
 ## Channel Status
-* See the current status of the channel
+* See the current information of the channel
 * Interact with viewers via the chat
+* Change the Status or the Game
 
 ## Labels
 * Text to screen - Write some text directly to the stream
