@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Twitch.Api.HttpServer;
 using Twitch.Api.Model;
 
 namespace Twitch.Api
@@ -22,7 +23,7 @@ namespace Twitch.Api
         };
 
         public readonly OAuthHttpServer HttpServer;
-        public Thread HttpServerThread; 
+        private Thread _httpServerThread; 
 
         public OAuth()
         {
@@ -42,8 +43,8 @@ namespace Twitch.Api
 
         public void StartAuthRedirectServer()
         {
-            HttpServerThread = new Thread(HttpServer.listen);
-            HttpServerThread.Start();
+            _httpServerThread = new Thread(HttpServer.Listen);
+            _httpServerThread.Start();
         }
 
         public async Task<string> GetAccessToken(string authCode)

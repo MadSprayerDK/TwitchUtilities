@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -11,27 +12,26 @@ namespace Twitch.Api.HttpServer
 {
     public abstract class HttpServer
     {
+        private readonly int _port;
+        protected TcpListener Listener;
+        protected bool IsActive = true;
 
-        protected int port;
-        protected TcpListener listener;
-        protected bool is_active = true;
-
-        public HttpServer(int port)
+        protected HttpServer(int port)
         {
-            this.port = port;
+            _port = port;
         }
 
-        public void listen()
+        public void Listen()
         {
-            listener = new TcpListener(port);
-            listener.Start();
-            while (is_active)
+            Listener = new TcpListener(IPAddress.Any, _port);
+            Listener.Start();
+            while (IsActive)
             {
                 try
                 {
-                    TcpClient s = listener.AcceptTcpClient();
-                    HttpProcessor processor = new HttpProcessor(s, this);
-                    Thread thread = new Thread(new ThreadStart(processor.process));
+                    TcpClient s = Listener.AcceptTcpClient();
+                    var processor = new HttpProcessor(s, this);
+                    var thread = new Thread(processor.Process);
                     thread.Start();
                     Thread.Sleep(1);
                 }
@@ -42,7 +42,6 @@ namespace Twitch.Api.HttpServer
             }
         }
 
-        public abstract void handleGETRequest(HttpProcessor p);
-        public abstract void handlePOSTRequest(HttpProcessor p, StreamReader inputData);
+        public abstract void HandleGetRequest(HttpProcessor p);
     } 
 }

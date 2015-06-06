@@ -71,7 +71,7 @@
     <Compile Include="Model\VerifyElements\VerifyAuthorization.cs" />
     <Compile Include="Model\VerifyElements\VerifyToken.cs" />
     <Compile Include="OAuth.cs" />
-    <Compile Include="OAuthHttpServer.cs" />
+    <Compile Include="HttpServer\OAuthHttpServer.cs" />
     <Compile Include="TwitchApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
