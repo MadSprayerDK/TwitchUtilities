@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="300" 
              d:DesignWidth="300"
@@ -48,22 +49,76 @@
                         Name="Followers" 
                         Content="-" />
                 </StackPanel>
-                <StackPanel 
-                    Orientation="Horizontal">
-                    <Label 
-                        Content="Game:" />
-                    <Label 
-                        Name="Game" 
-                        Content="-" />
-                </StackPanel>
-                <StackPanel 
-                    Orientation="Horizontal">
-                    <Label 
-                        Content="Status:" />
-                    <Label 
-                        Name="Status" 
-                        Content="-" />
-                </StackPanel>
+                <Grid
+                    Margin="0, 5, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="25" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label
+                        Content="Game:"
+                        Grid.Column="0" />
+                    <Label
+                        Name="Game"
+                        Grid.Column="1" />
+                    <toolkit:AutoCompleteBox
+                        Name="GameEdit" 
+                        Grid.Column="1"
+                        Visibility="Hidden"
+                        KeyUp="GameEdit_OnKeyUp"
+                        Margin="0, 0, 5, 0"
+                        MinimumPopulateDelay="0"
+                        MinimumPrefixLength="0"
+                        />
+                    <Button 
+                        Content="X"
+                        Grid.Column="1"
+                        Width="25"
+                        HorizontalAlignment="Right"
+                        Margin="5, 0, 5, 0"
+                        Click="GameEditCancle_OnClick"
+                        Name="GameEditCancel"
+                        Visibility="Hidden"/>
+                    <Button
+                        Content="E"
+                        Grid.Column="2"
+                        Click="GameToggleEdit_OnClick" Height="26" VerticalAlignment="Bottom"/>
+                </Grid>
+                <Grid
+                    Margin="0, 5, 0, 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="25" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Content="Status:"
+                        Grid.Column="0" />
+                    <Label
+                        Name="Status"
+                        Grid.Column="1"
+                        Visibility="Visible"/>
+                    <TextBox
+                        Name="StatusEdit"
+                        Grid.Column="1"
+                        Visibility="Hidden" />
+                    <Button
+                        Content="E"
+                        Grid.Column="2" 
+                        Click="StatusEdit_OnClick"/>
+                    <Button 
+                        Content="X"
+                        Grid.Column="1"
+                        Width="25"
+                        HorizontalAlignment="Right"
+                        Margin="5, 0, 5, 0"
+                        Click="StatusEditCancle_OnClick"
+                        Name="StatusEditCancel"
+                        Visibility="Hidden"/>
+                </Grid>
             </StackPanel>
         </GroupBox>
     </Grid>

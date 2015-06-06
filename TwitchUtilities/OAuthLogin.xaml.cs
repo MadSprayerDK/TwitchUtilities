@@ -64,11 +64,16 @@ namespace TwitchUtilities
 
         private async void HttpServer_OnOAuthCodeRecived(object sender, StringEventArg args)
         {
+            _oAuth.HttpServer.Stop();
             var accessCode = await _oAuth.GetAccessToken(args.Text);
             Settings.Default.OAuthToken = accessCode;
             Settings.Default.Save();
 
-            Dispatcher.Invoke(() => { OAuthLogin_OnLoaded(this, null); });
+            Dispatcher.Invoke(() =>
+            {
+                StatusText.Content = "Verifying Token...";
+                OAuthLogin_OnLoaded(this, null);
+            });
         }
     }
 }

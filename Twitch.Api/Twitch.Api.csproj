@@ -39,6 +39,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,10 +55,14 @@
     <Compile Include="HttpServer\StringEventArg.cs" />
     <Compile Include="Model\Channel.cs" />
     <Compile Include="Model\Links\ChannelLinks.cs" />
+    <Compile Include="Model\Links\SearchGames.cs" />
     <Compile Include="Model\Links\StreamLinks.cs" />
     <Compile Include="Model\Links\VerifyLinks.cs" />
     <Compile Include="Model\OAuthAccessToken.cs" />
     <Compile Include="Model\QueryError.cs" />
+    <Compile Include="Model\SearchGames.cs" />
+    <Compile Include="Model\SearchGamesElements\SearchGamesGame.cs" />
+    <Compile Include="Model\SearchGamesElements\SearchGamesImages.cs" />
     <Compile Include="Model\StreamElements\StreamPreview.cs" />
     <Compile Include="Model\StreamElements\StreamStreamLinks.cs" />
     <Compile Include="Model\StreamInfo.cs" />
