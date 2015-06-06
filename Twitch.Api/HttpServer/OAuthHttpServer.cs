@@ -20,8 +20,7 @@ namespace Twitch.Api.HttpServer
                 OAuthCodeRecived(this, new StringEventArg(queryElements["code"]));
 
             p.WriteSuccess();
-            p.OutputStream.WriteLine("<html><body><h1>Success</h1>");
-            p.OutputStream.WriteLine("You can now close this page.");
+            p.OutputStream.WriteLine(File.ReadAllText("HttpServer/success.html"));
         }
 
         public void Stop()
