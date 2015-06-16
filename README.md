@@ -1,13 +1,6 @@
 # TwitchUtilities
 Useful utilities for twitch streaming.
 
-## Twitch OAuth Login
-* Login with your Twitch account
-* Approve access for the application
-* Start using.
-
-Login information will not be seen or stored by the application.
-
 ## Checklists
 * Create checklists to use before and after streaming
 
@@ -19,3 +12,7 @@ Login information will not be seen or stored by the application.
 ## Labels
 * Text to screen - Write some text directly to the stream
 * Countdown - Show a countdown from a value
+ 
+## User Manual
+See more information and get started in the user manual  
+https://github.com/MadSprayerDK/TwitchUtilities/wiki/User-Manual
