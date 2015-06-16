@@ -14,5 +14,5 @@ Useful utilities for twitch streaming.
 * Countdown - Show a countdown from a value
  
 ## User Manual
-See more information and getting started in the user manual  
+See more information and get started in the user manual  
 https://github.com/MadSprayerDK/TwitchUtilities/wiki/User-Manual
