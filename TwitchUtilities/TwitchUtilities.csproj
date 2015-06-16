@@ -105,6 +105,12 @@
     <Compile Include="UserInterface\Labels.xaml.cs">
       <DependentUpon>Labels.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserInterface\LabelsPanels\CountdownLabelPanel.xaml.cs">
+      <DependentUpon>CountdownLabelPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\LabelsPanels\CustomLabelPanel.xaml.cs">
+      <DependentUpon>CustomLabelPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\LabelsPanels\CustomLabelVariable.xaml.cs">
       <DependentUpon>CustomLabelVariable.xaml</DependentUpon>
     </Compile>
@@ -138,6 +144,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserInterface\Labels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\LabelsPanels\CountdownLabelPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\LabelsPanels\CustomLabelPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

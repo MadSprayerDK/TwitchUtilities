@@ -3,81 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:TwitchUtilities.UserInterface.LabelsPanels"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <GroupBox
-                Header="Custom Label">
-            <StackPanel>
-                <TextBox 
-                    Name="CustomLabel"
-                    Margin="0, 5, 0, 0" 
-                    TextChanged="CustomLabel_OnTextChanged"/>
-
-                <StackPanel
-                    Name="CustomVariables" />
-                
-                <Label 
-                    Name="CustomLabelPreview"
-                    Visibility="Collapsed" 
-                    Margin="0, 5, 0, 0"/>
-
-                <Button 
-                    Click="UpdateLabelBtn_OnClick" 
-                    Content="Update Label" 
-                    Margin="0, 5, 0, 0"/>
-
-            </StackPanel>
-        </GroupBox>
-        <GroupBox
-                Header="Countdown"
-                Margin="5, 5, 5, 0">
-            <StackPanel
-                    Margin="0, 5, 0, 0">
-                <StackPanel 
-                        Orientation="Horizontal">
-                    <Label
-                        Content="Hours:" />
-                    <TextBox 
-                        Width="30" 
-                        Name="CountdownHours"
-                        TextChanged="CountdownInsert_TextChange" />
-                    <Label
-                        Content="Minutes:" />
-                    <TextBox 
-                        Width="30" 
-                        Name="CountdownMinutes" 
-                        TextChanged="CountdownInsert_TextChange" />
-                    <Label
-                        Content="Seconds:" />
-                    <TextBox 
-                        Width="30" 
-                        Name="CountdownSeconds" 
-                        TextChanged="CountdownInsert_TextChange" />
-                </StackPanel>
-                <Label 
-                    Content="Countdown Text" />
-                <TextBox
-                    Name="CountdownTextInput" 
-                    TextChanged="CountdownInsert_TextChange" />
-                <Label 
-                    Name="CountdownOutputLabel" />
-                <StackPanel 
-                    Orientation="Horizontal"
-                    Margin="0, 5, 0, 0">
-                    <Button 
-                        Click="ToggleCountdown_OnClick"
-                        Content="Start/Pause Countdown" />
-                    <Button 
-                        Click="ResetCountdown_OnClick"
-                        Content="Preview/Reset Countdown"
-                        Margin="5, 0, 0, 0" />
-                    <Button
-                        Click="ClearCountdown_OnClick"
-                        Content="Clear Countdown from Stream"
-                        Margin="5, 0, 0, 0" />
-                </StackPanel>
-            </StackPanel>
-        </GroupBox>
+        <controls:CustomLabelPanel />
+        <controls:CountdownLabelPanel />
     </StackPanel>
 </UserControl>
