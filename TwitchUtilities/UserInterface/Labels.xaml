@@ -11,11 +11,22 @@
             <StackPanel>
                 <TextBox 
                     Name="CustomLabel"
-                    Margin="0, 5, 0, 0" />
+                    Margin="0, 5, 0, 0" 
+                    TextChanged="CustomLabel_OnTextChanged"/>
+
+                <StackPanel
+                    Name="CustomVariables" />
+                
+                <Label 
+                    Name="CustomLabelPreview"
+                    Visibility="Collapsed" 
+                    Margin="0, 5, 0, 0"/>
+
                 <Button 
                     Click="UpdateLabelBtn_OnClick" 
                     Content="Update Label" 
                     Margin="0, 5, 0, 0"/>
+
             </StackPanel>
         </GroupBox>
         <GroupBox
