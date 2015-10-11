@@ -1,7 +1,5 @@
 ﻿using System.Linq;
 using System.Windows;
-using Twitch.Api;
-using Twitch.Api.HttpServer;
 using TwitchUtilities.Properties;
 
 namespace TwitchUtilities
@@ -11,12 +9,24 @@ namespace TwitchUtilities
     /// </summary>
     public partial class OAuthLogin
     {
-        private readonly OAuth _oAuth;
+        public static readonly string[] Scopes =
+        {
+            "chat_login", 
+            "channel_editor"
+        };
+
+        private readonly OAuth.Core.OAuth _oAuth;
         public OAuthLogin()
         {
             InitializeComponent();
-            _oAuth = new OAuth();
-            _oAuth.HttpServer.OAuthCodeRecived += HttpServer_OnOAuthCodeRecived;
+            _oAuth = new OAuth.Core.OAuth(
+                new OAuth.Core.Providers.Twitch(
+                    Scopes, 
+                    Twitch.OAuthInfo.OAuthInfo.ClientId, 
+                    Twitch.OAuthInfo.OAuthInfo.Secret,
+                    "http://localhost:8080",
+                    "WebPages/success_twitch.html"));
+            _oAuth.OAuthCodeRecived += OAuth_OnOAuthCodeRecived;
         }
 
         private async void OAuthLogin_OnLoaded(object sender, RoutedEventArgs e)
@@ -32,21 +42,21 @@ namespace TwitchUtilities
 
             var validatedToken = await _oAuth.VerifyToken(token);
 
-            if (!validatedToken.Token.Valid)
+            if (!validatedToken.Valid)
             {
                 StatusText.Content = "Token is invalid. Please login.";
                 LoginButton.IsEnabled = true;
                 return;
             }
 
-            if (!OAuth.Scopes.All(scope => validatedToken.Token.Authorization.Scopes.Contains(scope)))
+            if (!Scopes.All(scope => validatedToken.Scope.Contains(scope)))
             {
                 StatusText.Content = "Token is missing permissions. Please login.";
                 LoginButton.IsEnabled = true;
                 return;
             }
 
-            Settings.Default.CurrentChannel = validatedToken.Token.User_Name;
+            Settings.Default.CurrentChannel = validatedToken.UserName;
             Settings.Default.Save();
 
             var window = new MainWindow();
@@ -58,13 +68,12 @@ namespace TwitchUtilities
         {
             StatusText.Content = "Authorizing...";
             LoginButton.IsEnabled = false;
-            _oAuth.StartAuthRedirectServer();
+            _oAuth.StartOAuthRedirectServer();
             _oAuth.GotoAuthorization();
         }
 
-        private async void HttpServer_OnOAuthCodeRecived(object sender, StringEventArg args)
+        private async void OAuth_OnOAuthCodeRecived(object sender, OAuth.Core.HttpServer.StringEventArg args)
         {
-            _oAuth.HttpServer.Stop();
             var accessCode = await _oAuth.GetAccessToken(args.Text);
             Settings.Default.OAuthToken = accessCode;
             Settings.Default.Save();

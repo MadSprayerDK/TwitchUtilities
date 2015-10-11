@@ -4,7 +4,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace Twitch.Api.HttpServer
+namespace OAuth.Core.HttpServer
 {
     public class HttpProcessor
     {

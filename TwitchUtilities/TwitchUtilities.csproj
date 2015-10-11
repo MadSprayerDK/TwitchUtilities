@@ -84,6 +84,10 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Twitch.OAuthInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Twitch.OAuthInfo\Twitch.OAuthInfo\bin\Debug\Twitch.OAuthInfo.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -122,6 +126,9 @@
     </Compile>
     <Compile Include="UserInterface\StatusPanels\StatusPanel.xaml.cs">
       <DependentUpon>StatusPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Votes.xaml.cs">
+      <DependentUpon>Votes.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserInterface\StatusPanels\StatusPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\Votes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,6 +229,10 @@
     <Content Include="Settings\PostChecklist.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OAuth.Core\OAuth.Core.csproj">
+      <Project>{68837c14-128e-44b6-b137-e60b01195614}</Project>
+      <Name>OAuth.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Twitch.Api\Twitch.Api.csproj">
       <Project>{c70b2bee-079e-4997-b80c-c0d1a8f91fff}</Project>
       <Name>Twitch.Api</Name>

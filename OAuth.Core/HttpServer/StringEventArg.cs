@@ -1,4 +1,4 @@
-﻿namespace Twitch.Api.HttpServer
+﻿namespace OAuth.Core.HttpServer
 {
     public class StringEventArg
     {

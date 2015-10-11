@@ -2,15 +2,19 @@
 using System.IO;
 using System.Linq;
 
-namespace Twitch.Api.HttpServer
+namespace OAuth.Core.HttpServer
 {
     public class OAuthHttpServer : HttpServer
     {
         public delegate void RecivedCode(object sender, StringEventArg args);
         public event RecivedCode OAuthCodeRecived;
 
-        public OAuthHttpServer(int port) : base(port)
-        {}
+        private readonly string _successUri;
+
+        public OAuthHttpServer(int port, string successUri) : base(port)
+        {
+            _successUri = successUri;
+        }
 
         public override void HandleGetRequest(HttpProcessor p)
         {
@@ -20,7 +24,7 @@ namespace Twitch.Api.HttpServer
                 OAuthCodeRecived(this, new StringEventArg(queryElements["code"]));
 
             p.WriteSuccess();
-            p.OutputStream.WriteLine(File.ReadAllText("HttpServer/success.html"));
+            p.OutputStream.WriteLine(File.ReadAllText(_successUri));
         }
 
         public void Stop()
