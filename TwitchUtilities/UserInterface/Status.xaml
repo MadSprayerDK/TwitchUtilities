@@ -8,20 +8,26 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid 
-            Grid.Row="1">
+            Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <controls:StatusPanel
-                Grid.Column="0"/>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="195" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <controls:StatusPanel Grid.Row="0" />
+                <controls:DonationsPanel Grid.Row="1" />
+            </Grid>
             
             <GridSplitter 
                 Grid.Column="1"

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
+using mmOAuth.Core.HttpServer;
 using TwitchUtilities.Properties;
-
 namespace TwitchUtilities
 {
     /// <summary>
@@ -9,21 +9,21 @@ namespace TwitchUtilities
     /// </summary>
     public partial class OAuthLogin
     {
-        public static readonly string[] Scopes =
+        private static readonly string[] Scopes =
         {
             "chat_login", 
             "channel_editor"
         };
 
-        private readonly OAuth.Core.OAuth _oAuth;
+        private readonly mmOAuth.Core.OAuth _oAuth;
         public OAuthLogin()
         {
             InitializeComponent();
-            _oAuth = new OAuth.Core.OAuth(
-                new OAuth.Core.Providers.Twitch(
+            _oAuth = new mmOAuth.Core.OAuth(
+                new mmOAuth.Twitch.Provider(
                     Scopes, 
-                    Twitch.OAuthInfo.OAuthInfo.ClientId, 
-                    Twitch.OAuthInfo.OAuthInfo.Secret,
+                    OAuthInfo.TwitchOauthInfo.ClientId,
+                    OAuthInfo.TwitchOauthInfo.Secret,
                     "http://localhost:8080",
                     "WebPages/success_twitch.html"));
             _oAuth.OAuthCodeRecived += OAuth_OnOAuthCodeRecived;
@@ -72,7 +72,7 @@ namespace TwitchUtilities
             _oAuth.GotoAuthorization();
         }
 
-        private async void OAuth_OnOAuthCodeRecived(object sender, OAuth.Core.HttpServer.StringEventArg args)
+        private async void OAuth_OnOAuthCodeRecived(object sender, StringEventArg args)
         {
             var accessCode = await _oAuth.GetAccessToken(args.Text);
             Settings.Default.OAuthToken = accessCode;

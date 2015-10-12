@@ -66,14 +66,32 @@
     <Reference Include="ChatSharp">
       <HintPath>..\packages\ChatSharp.1.0.0\lib\net45\ChatSharp.dll</HintPath>
     </Reference>
+    <Reference Include="mmOAuth.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mmOAuth.Core.1.0.0.0\lib\net45\mmOAuth.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mmOAuth.Twitch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mmOAuth.Twitch.1.0.0.0\lib\net45\mmOAuth.Twitch.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mmOAuth.TwitchAlerts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mmOAuth.TwitchAlerts.1.0.0.0\lib\net45\mmOAuth.TwitchAlerts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Controls.Input.Toolkit">
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -91,8 +109,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFToolkit">
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +142,9 @@
     </Compile>
     <Compile Include="UserInterface\StatusPanels\ChatPanel.xaml.cs">
       <DependentUpon>ChatPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\StatusPanels\DonationsPanel.xaml.cs">
+      <DependentUpon>DonationsPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\StatusPanels\StatusPanel.xaml.cs">
       <DependentUpon>StatusPanel.xaml</DependentUpon>
@@ -171,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserInterface\StatusPanels\ChatPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\StatusPanels\DonationsPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,15 +250,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings\PreChecklist.txt" />
+    <Content Include="WebPages\success_twitch.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings\PostChecklist.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OAuth.Core\OAuth.Core.csproj">
-      <Project>{68837c14-128e-44b6-b137-e60b01195614}</Project>
-      <Name>OAuth.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Twitch.Api\Twitch.Api.csproj">
       <Project>{c70b2bee-079e-4997-b80c-c0d1a8f91fff}</Project>
       <Name>Twitch.Api</Name>
