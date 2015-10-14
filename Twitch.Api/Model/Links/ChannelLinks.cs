@@ -1,4 +1,4 @@
-﻿namespace Twitch.Api.Model.Links
+﻿namespace Api.Twitch.Model.Links
 {
     public class ChannelLinks
     {

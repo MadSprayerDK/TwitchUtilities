@@ -9,12 +9,21 @@
     
         
     <GroupBox Header="Donations" Margin="0, 0, 5, 0" Height="Auto">
-        <StackPanel>
-            <StackPanel Name="DonationsLogin" Visibility="Visible">
+        
+        <Grid Name="DonationGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel 
+                Name="DonationsLogin" 
+                Visibility="Visible"
+                Grid.Row="0">
                 <Label 
                     Name="DonationLoginLabel"
                     HorizontalAlignment="Center">
-                        Checking OAuth Token.
+                    Checking OAuth Token.
                 </Label>
                 <Button 
                     Margin="5, 5, 5, 5"
@@ -23,14 +32,16 @@
                     Name="DonationsLoginButton">
                     Login to Twitch Alerts</Button>
             </StackPanel>
-            
-            <StackPanel Name="DonationsDisplay" Visibility="Collapsed">
-                <Label>Test</Label>
-            </StackPanel>
-        </StackPanel>
-    </GroupBox>
-        
-        
-        
-    
+
+            <ScrollViewer
+                Name="DonationsDisplay"
+                Visibility="Collapsed"
+                CanContentScroll="True"
+                VerticalScrollBarVisibility="Visible"
+                    Grid.Row="1">
+                <StackPanel Name="DonationsDisplayContent">
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>    
+    </GroupBox>   
 </UserControl>

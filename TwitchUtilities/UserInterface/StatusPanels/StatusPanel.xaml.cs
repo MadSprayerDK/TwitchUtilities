@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Input;
-using Twitch.Api;
-using Twitch.Api.Model;
+using Api.Twitch;
+using Api.Twitch.Model;
 using TwitchUtilities.Properties;
 
 namespace TwitchUtilities.UserInterface.StatusPanels
@@ -111,7 +111,7 @@ namespace TwitchUtilities.UserInterface.StatusPanels
                 StatusEdit.Text = Status.Content.ToString();
                 StatusEdit.IsEnabled = true;
                 StatusEdit.Visibility = Visibility.Visible;
-                StatusEditCancel.Visibility = Visibility.Visible;;
+                StatusEditCancel.Visibility = Visibility.Visible;
             }
             else
             {

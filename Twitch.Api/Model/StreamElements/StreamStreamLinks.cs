@@ -1,4 +1,4 @@
-﻿namespace Twitch.Api.Model.StreamElements
+﻿namespace Api.Twitch.Model.StreamElements
 {
     public class StreamStreamLinks
     {

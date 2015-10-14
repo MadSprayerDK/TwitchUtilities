@@ -5,7 +5,11 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchUtilities", "TwitchUtilities\TwitchUtilities.csproj", "{37C86C1F-CC6B-428C-BEC1-6AC082E4F515}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitch.Api", "Twitch.Api\Twitch.Api.csproj", "{C70B2BEE-079E-4997-B80C-C0D1A8F91FFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Twitch", "Twitch.Api\Api.Twitch.csproj", "{C70B2BEE-079E-4997-B80C-C0D1A8F91FFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Core", "Api.Core\Api.Core.csproj", "{DA19A336-75FA-43AA-8C93-A4F80D36FFB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.TwitchAlerts", "Api.TwitchAlerts\Api.TwitchAlerts.csproj", "{A57EADC7-8271-4788-8558-C456CDA66A9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{C70B2BEE-079E-4997-B80C-C0D1A8F91FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C70B2BEE-079E-4997-B80C-C0D1A8F91FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C70B2BEE-079E-4997-B80C-C0D1A8F91FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA19A336-75FA-43AA-8C93-A4F80D36FFB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA19A336-75FA-43AA-8C93-A4F80D36FFB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA19A336-75FA-43AA-8C93-A4F80D36FFB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA19A336-75FA-43AA-8C93-A4F80D36FFB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A57EADC7-8271-4788-8558-C456CDA66A9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57EADC7-8271-4788-8558-C456CDA66A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57EADC7-8271-4788-8558-C456CDA66A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57EADC7-8271-4788-8558-C456CDA66A9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

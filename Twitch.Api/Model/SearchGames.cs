@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Twitch.Api.Model.SearchGamesElements;
+﻿using System.Collections.Generic;
+using Api.Twitch.Model.SearchGamesElements;
 
-namespace Twitch.Api.Model
+namespace Api.Twitch.Model
 {
     public class SearchGames
     {
-        public Links.SearchGames _Links { set; get; }
+        public global::Api.Twitch.Model.Links.SearchGames _Links { set; get; }
         public List<SearchGamesGame> Games { set; get; } 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
-using Twitch.Api.Model.Links;
+using Api.Twitch.Model.Links;
 
-namespace Twitch.Api.Model
+namespace Api.Twitch.Model
 {
     public class Channel
     {

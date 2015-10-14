@@ -1,7 +1,7 @@
-﻿using Twitch.Api.Model.Links;
-using Twitch.Api.Model.StreamElements;
+﻿using Api.Twitch.Model.Links;
+using Api.Twitch.Model.StreamElements;
 
-namespace Twitch.Api.Model
+namespace Api.Twitch.Model
 {
     public class StreamInfo
     {

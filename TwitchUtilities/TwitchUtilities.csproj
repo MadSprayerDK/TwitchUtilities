@@ -119,6 +119,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\UnixTime.cs" />
     <Compile Include="OAuthLogin.xaml.cs">
       <DependentUpon>OAuthLogin.xaml</DependentUpon>
     </Compile>
@@ -142,6 +143,9 @@
     </Compile>
     <Compile Include="UserInterface\StatusPanels\ChatPanel.xaml.cs">
       <DependentUpon>ChatPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\StatusPanels\DonationDisplay.xaml.cs">
+      <DependentUpon>DonationDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\StatusPanels\DonationsPanel.xaml.cs">
       <DependentUpon>DonationsPanel.xaml</DependentUpon>
@@ -193,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserInterface\StatusPanels\ChatPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\StatusPanels\DonationDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -258,9 +266,13 @@
     <Content Include="Settings\PostChecklist.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Twitch.Api\Twitch.Api.csproj">
+    <ProjectReference Include="..\Api.TwitchAlerts\Api.TwitchAlerts.csproj">
+      <Project>{a57eadc7-8271-4788-8558-c456cda66a9d}</Project>
+      <Name>Api.TwitchAlerts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Twitch.Api\Api.Twitch.csproj">
       <Project>{c70b2bee-079e-4997-b80c-c0d1a8f91fff}</Project>
-      <Name>Twitch.Api</Name>
+      <Name>Api.Twitch</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

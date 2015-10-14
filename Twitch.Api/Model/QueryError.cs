@@ -1,4 +1,4 @@
-﻿namespace Twitch.Api.Model
+﻿namespace Api.Twitch.Model
 {
     public class QueryError
     {

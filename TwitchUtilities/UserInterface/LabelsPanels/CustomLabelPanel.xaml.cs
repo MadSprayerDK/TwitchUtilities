@@ -11,7 +11,7 @@ namespace TwitchUtilities.UserInterface.LabelsPanels
     /// <summary>
     /// Interaction logic for CustomLabelPanel.xaml
     /// </summary>
-    public partial class CustomLabelPanel : UserControl
+    public partial class CustomLabelPanel
     {
         private readonly Dictionary<string, string> _customLabelCache;
 
