@@ -153,6 +153,9 @@
     <Compile Include="UserInterface\StatusPanels\StatusPanel.xaml.cs">
       <DependentUpon>StatusPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserInterface\VotePanels\VoteOption.xaml.cs">
+      <DependentUpon>VoteOption.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\Votes.xaml.cs">
       <DependentUpon>Votes.xaml</DependentUpon>
     </Compile>
@@ -212,6 +215,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserInterface\VotePanels\VoteOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserInterface\Votes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +264,9 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Labels\VoteResult.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Settings\PreChecklist.txt" />
     <Content Include="WebPages\success_twitch.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

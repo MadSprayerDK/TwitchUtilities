@@ -5,16 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
+    
         <GroupBox
             Header="Votes"
             Margin="0, 0, 5, 0">
-            
-            
-            
-            
-            
-            
-        </GroupBox>
-    </StackPanel>
+        <StackPanel>
+            <Label>Vote Name:</Label>
+            <TextBox Name="VoteName"></TextBox>
+            <StackPanel Orientation="Horizontal" Margin="0, 5, 0, 0">
+                <Button Click="AddOption_Click" Name="AddOption">Add Option</Button>
+                <Button Margin="5, 0, 0, 0" Name="StartPause" Click="StartPause_Click">Start Vote</Button>
+                <Button Margin="5, 0, 0, 0" Name="Reset" Click="Reset_Click">Reset Vote</Button>
+                <CheckBox
+                    VerticalAlignment="Center"
+                    Margin="5, 0, 0 ,0"
+                    Name="ShowOnStream"/>
+                <Label>Show on stream</Label>
+            </StackPanel>
+            <StackPanel Name="OptionsContent">
+                
+            </StackPanel>
+        </StackPanel>
+    </GroupBox>
 </UserControl>

@@ -25,6 +25,11 @@
                 Header="Labels">
                 <controls:Labels />
             </TabItem>
+            
+            <TabItem
+                Header="Vote">
+                <controls:Votes />
+            </TabItem>
         </TabControl>        
     </Grid>
 </Window>
