@@ -8,10 +8,12 @@ Useful utilities for twitch streaming.
 * See the current information of the channel
 * Interact with viewers via the chat
 * Change the Status or the Game
+* See Donations from TwitchAlerts
 
 ## Labels
 * Text to screen - Write some text directly to the stream
 * Countdown - Show a countdown from a value
+* Show current song playing on Spotify
  
 ## User Manual
 See more information and get started in the user manual  
