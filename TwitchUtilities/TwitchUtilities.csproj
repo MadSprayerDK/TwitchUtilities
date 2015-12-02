@@ -138,6 +138,9 @@
     <Compile Include="UserInterface\LabelsPanels\CustomLabelVariable.xaml.cs">
       <DependentUpon>CustomLabelVariable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserInterface\LabelsPanels\SpotifyLabelPanel.xaml.cs">
+      <DependentUpon>SpotifyLabelPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserInterface\LabelsPanels\CustomLabelVariable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\LabelsPanels\SpotifyLabelPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -267,6 +274,9 @@
     <Resource Include="Labels\VoteResult.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Labels\SpotifyInfo.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Settings\PreChecklist.txt" />
     <Content Include="WebPages\success_twitch.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -276,6 +286,10 @@
     <Content Include="Settings\PostChecklist.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Api.Spotify\Api.Spotify.csproj">
+      <Project>{e430c22f-75d6-4a61-9121-afacbdcf6112}</Project>
+      <Name>Api.Spotify</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Api.TwitchAlerts\Api.TwitchAlerts.csproj">
       <Project>{a57eadc7-8271-4788-8558-c456cda66a9d}</Project>
       <Name>Api.TwitchAlerts</Name>

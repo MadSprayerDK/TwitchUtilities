@@ -9,5 +9,6 @@
     <StackPanel>
         <controls:CustomLabelPanel />
         <controls:CountdownLabelPanel />
+        <controls:SpotifyLabelPanel />
     </StackPanel>
 </UserControl>

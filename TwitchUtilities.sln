@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Core", "Api.Core\Api.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.TwitchAlerts", "Api.TwitchAlerts\Api.TwitchAlerts.csproj", "{A57EADC7-8271-4788-8558-C456CDA66A9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Spotify", "Api.Spotify\Api.Spotify.csproj", "{E430C22F-75D6-4A61-9121-AFACBDCF6112}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A57EADC7-8271-4788-8558-C456CDA66A9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A57EADC7-8271-4788-8558-C456CDA66A9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A57EADC7-8271-4788-8558-C456CDA66A9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E430C22F-75D6-4A61-9121-AFACBDCF6112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E430C22F-75D6-4A61-9121-AFACBDCF6112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E430C22F-75D6-4A61-9121-AFACBDCF6112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E430C22F-75D6-4A61-9121-AFACBDCF6112}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
