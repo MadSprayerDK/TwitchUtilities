@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using Api.TwitchAlerts;
-using mmOAuth.Core.HttpServer;
+using ManoSoftware.mmOAuth.Core.HttpServer;
 using TwitchUtilities.Properties;
 using Timer = System.Timers.Timer;
 
@@ -20,7 +20,7 @@ namespace TwitchUtilities.UserInterface.StatusPanels
             "donations.create"
         };
 
-        private mmOAuth.Core.OAuth _oAuth;
+        private ManoSoftware.mmOAuth.Core.OAuth _oAuth;
         private TwitchAlertsApi _api;
         private Timer _updateDonations;
         private bool _onLoadCalled;
@@ -39,7 +39,7 @@ namespace TwitchUtilities.UserInterface.StatusPanels
 
             if (string.IsNullOrEmpty(Settings.Default.TwitchAlertsOAuthToken))
             {
-                _oAuth = new mmOAuth.Core.OAuth(new mmOAuth.TwitchAlerts.Provider(
+                _oAuth = new ManoSoftware.mmOAuth.Core.OAuth(new ManoSoftware.mmOAuth.TwitchAlerts.Provider(
                                 Scopes,
                                 OAuthInfo.TwitchAlertsOauthInfo.ClientId,
                                 OAuthInfo.TwitchAlertsOauthInfo.Secret,

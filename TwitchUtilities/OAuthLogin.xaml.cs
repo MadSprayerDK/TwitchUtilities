@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Windows;
-using mmOAuth.Core.HttpServer;
+using ManoSoftware.mmOAuth.Core.HttpServer;
 using TwitchUtilities.Properties;
 namespace TwitchUtilities
 {
@@ -15,12 +15,12 @@ namespace TwitchUtilities
             "channel_editor"
         };
 
-        private readonly mmOAuth.Core.OAuth _oAuth;
+        private readonly ManoSoftware.mmOAuth.Core.OAuth _oAuth;
         public OAuthLogin()
         {
             InitializeComponent();
-            _oAuth = new mmOAuth.Core.OAuth(
-                new mmOAuth.Twitch.Provider(
+            _oAuth = new ManoSoftware.mmOAuth.Core.OAuth(
+                new ManoSoftware.mmOAuth.Twitch.Provider(
                     Scopes, 
                     OAuthInfo.TwitchOauthInfo.ClientId,
                     OAuthInfo.TwitchOauthInfo.Secret,

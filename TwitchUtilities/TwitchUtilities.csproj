@@ -66,8 +66,16 @@
     <Reference Include="ChatSharp">
       <HintPath>..\packages\ChatSharp.1.0.0\lib\net45\ChatSharp.dll</HintPath>
     </Reference>
-    <Reference Include="mmOAuth.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mmOAuth.Core.1.0.0.0\lib\net45\mmOAuth.Core.dll</HintPath>
+    <Reference Include="ManoSoftware.mmOAuth.Core, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ManoSoftware.mmOAuth.Core.1.0.0.1\lib\net45\ManoSoftware.mmOAuth.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ManoSoftware.mmOAuth.Twitch, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ManoSoftware.mmOAuth.Twitch.1.0.0.3\lib\net45\ManoSoftware.mmOAuth.Twitch.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ManoSoftware.mmOAuth.TwitchAlerts, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ManoSoftware.mmOAuth.TwitchAlerts.1.0.0.3\lib\net45\ManoSoftware.mmOAuth.TwitchAlerts.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mmOAuth.Twitch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
